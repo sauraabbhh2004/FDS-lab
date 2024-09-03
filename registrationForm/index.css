@@ -1,0 +1,15 @@
+#mainDiv {
+    display: flex;           /* Enables flexbox layout */
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;     /* Centers items vertically */
+    height: 100vh;           /* Makes the div take full viewport height */
+}
+
+#mainDiv form {
+    width: 100%;             /* Ensures the form doesn't exceed the div's width */
+    max-width: 400px;        /* Sets a maximum width for the form */
+    padding: 20px;           /* Adds padding for a better appearance */
+    background-color: #f9f9f9; /* Background color of the form */
+    border-radius: 8px;      /* Rounded corners for the form */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}

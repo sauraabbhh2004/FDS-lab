@@ -1,0 +1,23 @@
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .form-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    background-color: #f8f9fa; /* Optional background color */
+  }
+  
+  form {
+    width: 100%; /* Responsive width */
+    max-width: 400px; /* Limit the maximum width */
+    padding: 20px; /* Padding around the form */
+    border: 1px solid #ced4da; /* Optional: border around the form */
+    border-radius: 5px; /* Rounded corners */
+    background-color: white; /* Background color of the form */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for a nice effect */
+  }
+  

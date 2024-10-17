@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New User</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f7f8fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #4a4a4a;
+    }
+
+    .card {
+      border: none;
+      border-radius: 15px;
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      border: 2px solid #ced4da;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: #007bff;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 500px;
+    }
+
+    .text-center {
+      margin-top: 20px;
+    }
+
+    .shadow-sm {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* Hover animation for inputs */
+    .form-control:hover {
+      border-color: #007bff;
+    }
+
+    /* Animation for buttons */
+    button {
+      transition: transform 0.3s;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Add New User</h1>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form id="addUserForm">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Add User</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <button class="btn btn-secondary" onclick="window.location.href='displayUsers.html'">View All Users</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    const apiUrl = 'http://localhost:3000/api/users';
+
+    document.getElementById('addUserForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('User added successfully!');
+        document.getElementById('addUserForm').reset();
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+
+</body>
+</html>
